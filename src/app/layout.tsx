@@ -3,7 +3,9 @@ import type { ReactNode } from "react";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { Footer, MinimalFooter } from "@/components/layout/Footer";
+import { FooterGate } from "@/components/layout/FooterGate";
+import { HideOnAuth } from "@/components/layout/HideOnAuth";
 import { ProgressSteps } from "@/components/layout/ProgressSteps";
 
 const poppins = Poppins({
@@ -22,10 +24,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${poppins.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-peace-white text-peace-heading">
-        <Header />
-        <ProgressSteps />
+        <HideOnAuth>
+          <Header />
+          <ProgressSteps />
+        </HideOnAuth>
         {children}
-        <Footer />
+        <FooterGate full={<Footer />} minimal={<MinimalFooter />} />
       </body>
     </html>
   );

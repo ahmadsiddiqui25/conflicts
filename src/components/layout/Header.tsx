@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AuthNav } from "@/components/layout/AuthNav";
 
 export function Header() {
   return (
@@ -17,12 +18,7 @@ export function Header() {
           />
         </Link>
         <div className="flex items-center gap-4">
-          <Link
-            href="/login"
-            className="hidden text-sm font-semibold text-peace-secondary transition-colors hover:text-peace-primary sm:inline-block"
-          >
-            Log In
-          </Link>
+          <AuthNav />
           <Link
             href="/report"
             className="rounded-full border border-peace-pink-shade/50 px-3 py-1.5 text-xs font-semibold text-peace-pink-shade transition-colors hover:bg-peace-light-pink sm:text-sm"

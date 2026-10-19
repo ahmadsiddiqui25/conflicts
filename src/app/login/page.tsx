@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AuthLayout } from "@/components/auth/AuthLayout";
 import { TextField, PasswordField } from "@/components/forms/fields";
 import { Button, LinkButton } from "@/components/ui/Button";
+import { signIn } from "@/lib/auth";
 
 export default function LoginPage() {
   const [signedIn, setSignedIn] = useState(false);
@@ -30,13 +31,15 @@ export default function LoginPage() {
       description="Sign in to manage your Peace Rooms and continue a conversation."
     >
       <form
-        className="space-y-6"
+        className="space-y-4"
         onSubmit={(e) => {
           e.preventDefault();
+          const email = String(new FormData(e.currentTarget).get("email") ?? "");
+          signIn({ name: email.split("@")[0] || "there", email });
           setSignedIn(true);
         }}
       >
-        <TextField label="Email" required type="email" placeholder="you@example.com" />
+        <TextField label="Email" name="email" required type="email" placeholder="you@example.com" />
         <PasswordField
           label="Password"
           required

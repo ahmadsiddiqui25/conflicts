@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AuthLayout } from "@/components/auth/AuthLayout";
 import { TextField, PasswordField } from "@/components/forms/fields";
 import { Button, LinkButton } from "@/components/ui/Button";
+import { signIn } from "@/lib/auth";
 
 export default function SignupPage() {
   const [created, setCreated] = useState(false);
@@ -33,16 +34,23 @@ export default function SignupPage() {
       description="You'll need this to create a Peace Room or manage one you've joined."
     >
       <form
-        className="space-y-6"
+        className="space-y-4"
         onSubmit={(e) => {
           e.preventDefault();
           const passwordsMatch = passwordRef.current?.value === confirmRef.current?.value;
           setMismatch(!passwordsMatch);
-          if (passwordsMatch) setCreated(true);
+          if (passwordsMatch) {
+            const data = new FormData(e.currentTarget);
+            signIn({
+              name: String(data.get("firstName") ?? "").trim() || "there",
+              email: String(data.get("email") ?? ""),
+            });
+            setCreated(true);
+          }
         }}
       >
-        <TextField label="First Name" required placeholder="Jordan" />
-        <TextField label="Email" required type="email" placeholder="you@example.com" />
+        <TextField label="First Name" name="firstName" required placeholder="Jordan" />
+        <TextField label="Email" name="email" required type="email" placeholder="you@example.com" />
         <PasswordField
           label="Password"
           required
