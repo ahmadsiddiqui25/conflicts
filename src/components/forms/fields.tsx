@@ -1,6 +1,28 @@
 "use client";
 
-import { useId, useState, type ChangeEvent } from "react";
+import { useId, useState, type ChangeEvent, type Ref } from "react";
+
+function EyeIcon({ open }: { open: boolean }) {
+  return open ? (
+    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
+      <path
+        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.6" />
+    </svg>
+  ) : (
+    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
+      <path
+        d="M3 3l18 18M10.6 10.7a3 3 0 0 0 4.2 4.2M6.5 6.6C4 8.1 2 12 2 12s3.5 7 10 7c1.9 0 3.5-.5 4.8-1.2M9.9 5.2A10.4 10.4 0 0 1 12 5c6.5 0 10 7 10 7a15.6 15.6 0 0 1-2.4 3.3"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 const baseFieldClass =
   "w-full rounded-[10px] border border-peace-gray bg-transparent px-[25px] py-[12px] text-base font-light text-peace-heading outline-none transition-colors focus:border-peace-primary";
@@ -58,6 +80,56 @@ export function TextField({
         defaultValue={defaultValue}
         className={inputFieldClass}
       />
+    </div>
+  );
+}
+
+export function PasswordField({
+  label,
+  required,
+  placeholder,
+  name,
+  autoComplete,
+  minLength,
+  ref,
+}: {
+  label: string;
+  required?: boolean;
+  placeholder?: string;
+  name?: string;
+  autoComplete?: string;
+  minLength?: number;
+  ref?: Ref<HTMLInputElement>;
+}) {
+  const id = useId();
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <div>
+      <FieldLabel htmlFor={id} required={required}>
+        {label}
+      </FieldLabel>
+      <div className="relative">
+        <input
+          id={id}
+          name={name}
+          type={visible ? "text" : "password"}
+          required={required}
+          minLength={minLength}
+          placeholder={placeholder}
+          autoComplete={autoComplete}
+          ref={ref}
+          className={`${inputFieldClass} pr-14`}
+        />
+        <button
+          type="button"
+          onClick={() => setVisible((prev) => !prev)}
+          aria-label={visible ? "Hide password" : "Show password"}
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-peace-gray-muted transition-colors hover:text-peace-primary"
+        >
+          <EyeIcon open={visible} />
+        </button>
+      </div>
     </div>
   );
 }
