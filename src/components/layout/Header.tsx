@@ -16,12 +16,20 @@ export function Header() {
             className="h-10 w-auto sm:h-11"
           />
         </Link>
-        <Link
-          href="/report"
-          className="rounded-full border border-peace-pink-shade/50 px-3 py-1.5 text-xs font-semibold text-peace-pink-shade transition-colors hover:bg-peace-light-pink sm:text-sm"
-        >
-          Report a Safety Concern
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/login"
+            className="hidden text-sm font-semibold text-peace-secondary transition-colors hover:text-peace-primary sm:inline-block"
+          >
+            Log In
+          </Link>
+          <Link
+            href="/report"
+            className="rounded-full border border-peace-pink-shade/50 px-3 py-1.5 text-xs font-semibold text-peace-pink-shade transition-colors hover:bg-peace-light-pink sm:text-sm"
+          >
+            Report a Safety Concern
+          </Link>
+        </div>
       </div>
     </header>
   );
