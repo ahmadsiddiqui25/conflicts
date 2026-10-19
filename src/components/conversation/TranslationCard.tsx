@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
 const DRAFT =
   "I feel frustrated about losing access to tennis courts that have been important to our community. I would like a fair schedule that provides predictable tennis access while considering the needs of pickleball players.";
@@ -49,13 +50,9 @@ export function TranslationCard() {
       </p>
 
       <div className="flex flex-wrap gap-3">
-        <button
-          type="button"
-          onClick={() => setApproved(true)}
-          className="peace-gradient-bg rounded-full px-6 py-3 text-sm font-semibold text-peace-white"
-        >
+        <Button type="button" onClick={() => setApproved(true)}>
           Approve &amp; Share
-        </button>
+        </Button>
         <button
           type="button"
           onClick={() => setEditing((prev) => !prev)}

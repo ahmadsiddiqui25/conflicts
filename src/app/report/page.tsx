@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { PageShell } from "@/components/layout/PageShell";
 import { Card, PageHeading } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 
 const CATEGORIES = ["Threats", "Abuse or harassment", "Coercion", "Something else"];
 
@@ -67,12 +68,7 @@ export default function SafetyReportPage() {
             />
           </div>
 
-          <button
-            type="submit"
-            className="peace-gradient-bg rounded-full px-8 py-3.5 text-sm font-semibold text-peace-white"
-          >
-            Submit Report
-          </button>
+          <Button type="submit">Submit Report</Button>
         </form>
       </Card>
     </PageShell>

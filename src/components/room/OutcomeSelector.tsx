@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/Button";
 
 const OUTCOMES = [
   {
@@ -62,13 +63,9 @@ export function OutcomeSelector() {
         Library. Nothing is retained without this consent.
       </label>
 
-      <button
-        type="button"
-        onClick={() => setClosed(true)}
-        className="peace-gradient-bg rounded-full px-8 py-3.5 text-sm font-semibold text-peace-white"
-      >
+      <Button type="button" onClick={() => setClosed(true)}>
         Close Peace Room
-      </button>
+      </Button>
     </div>
   );
 }

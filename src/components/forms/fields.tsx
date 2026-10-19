@@ -3,7 +3,10 @@
 import { useId, useState, type ChangeEvent } from "react";
 
 const baseFieldClass =
-  "w-full rounded-[10px] border border-peace-gray bg-transparent px-5 py-3 text-base font-light text-peace-heading outline-none transition-colors focus:border-peace-primary";
+  "w-full rounded-[10px] border border-peace-gray bg-transparent px-[25px] py-[12px] text-base font-light text-peace-heading outline-none transition-colors focus:border-peace-primary";
+
+const inputFieldClass = `${baseFieldClass} h-[65px]`;
+const textareaFieldClass = `${baseFieldClass} resize-none py-[20px]`;
 
 export function FieldLabel({
   htmlFor,
@@ -53,7 +56,7 @@ export function TextField({
         maxLength={maxLength}
         placeholder={placeholder}
         defaultValue={defaultValue}
-        className={baseFieldClass}
+        className={inputFieldClass}
       />
     </div>
   );
@@ -94,7 +97,7 @@ export function CounterTextField({
         placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className={baseFieldClass}
+        className={inputFieldClass}
       />
     </div>
   );
@@ -141,7 +144,7 @@ export function CounterTextArea({
         rows={rows}
         value={value}
         onChange={onChange}
-        className={`${baseFieldClass} resize-none`}
+        className={textareaFieldClass}
       />
     </div>
   );
