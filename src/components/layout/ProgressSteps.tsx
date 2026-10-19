@@ -10,7 +10,7 @@ export function ProgressSteps() {
   if (!current) return null;
 
   return (
-    <div className="w-full border-b border-peace-gray/60 bg-peace-light-pink/30">
+    <div className="sticky top-16 z-30 w-full border-b border-peace-gray/60 bg-peace-light-pink/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-1 overflow-x-auto px-4 py-3 sm:px-6">
         {STEPS.map((step) => {
           const isActive = step.number === current.number;
