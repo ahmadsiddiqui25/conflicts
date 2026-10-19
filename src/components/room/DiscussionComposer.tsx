@@ -24,6 +24,13 @@ export function DiscussionComposer() {
 
   return (
     <div className="space-y-3">
+      {posted.length === 0 && !preview && (
+        <div className="rounded-[10px] border border-dashed border-peace-gray p-6 text-center text-sm text-peace-gray-muted">
+          No messages yet. Once both ASKs have an approved Peace Translation, discussion starts
+          here.
+        </div>
+      )}
+
       {posted.map((text, i) => (
         <div key={i} className="rounded-[10px] border border-peace-gray bg-peace-white p-3 text-sm text-peace-heading">
           {text}
