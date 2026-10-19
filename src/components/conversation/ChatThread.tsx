@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 type Message = {
   id: string;
@@ -23,6 +23,20 @@ const GUIDE_FOLLOW_UPS = [
 // the actual request outcome.
 const SIMULATED_FAILURE_RATE = 0.2;
 
+function Avatar({ from }: { from: Message["from"] }) {
+  return (
+    <div
+      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${
+        from === "you"
+          ? "peace-gradient-bg text-peace-white"
+          : "border border-peace-primary/30 bg-peace-light-pink/60 text-peace-secondary"
+      }`}
+    >
+      {from === "you" ? "Me" : "AI"}
+    </div>
+  );
+}
+
 export function ChatThread() {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -34,6 +48,11 @@ export function ChatThread() {
   const [draft, setDraft] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [pendingReply, setPendingReply] = useState<string | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
+  }, [messages, status]);
 
   function requestReply(replyText: string) {
     setStatus("sending");
@@ -69,14 +88,20 @@ export function ChatThread() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex max-h-[28rem] min-h-[16rem] flex-col gap-3 overflow-y-auto rounded-[20px] border border-peace-gray bg-peace-light-pink/10 p-4 sm:p-5">
+      <div
+        ref={scrollRef}
+        className="flex h-[32rem] flex-col gap-4 overflow-y-auto rounded-[20px] border border-peace-gray bg-peace-light-pink/10 p-4 sm:h-[36rem] sm:p-6"
+      >
         {messages.map((message) => (
           <div
             key={message.id}
-            className={`flex ${message.from === "you" ? "justify-end" : "justify-start"}`}
+            className={`flex items-end gap-2.5 ${
+              message.from === "you" ? "flex-row-reverse" : "flex-row"
+            }`}
           >
+            <Avatar from={message.from} />
             <div
-              className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+              className={`max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-[60%] ${
                 message.from === "you"
                   ? "peace-gradient-bg text-peace-white"
                   : "border border-peace-gray bg-peace-white text-peace-heading"
@@ -92,15 +117,17 @@ export function ChatThread() {
           </div>
         ))}
         {status === "sending" && (
-          <div className="flex justify-start">
+          <div className="flex items-end gap-2.5">
+            <Avatar from="guide" />
             <div className="rounded-2xl border border-peace-gray bg-peace-white px-4 py-3 text-sm text-peace-gray-muted">
               AI Peace Guide is typing…
             </div>
           </div>
         )}
         {status === "error" && (
-          <div className="flex justify-start">
-            <div className="max-w-[85%] rounded-2xl border border-peace-primary/40 bg-peace-light-pink/30 px-4 py-3 text-sm text-peace-secondary">
+          <div className="flex items-end gap-2.5">
+            <Avatar from="guide" />
+            <div className="max-w-[75%] rounded-2xl border border-peace-primary/40 bg-peace-light-pink/30 px-4 py-3 text-sm text-peace-secondary sm:max-w-[60%]">
               <p>
                 We couldn&apos;t reach your AI Peace Guide. Your message is saved — nothing was
                 lost.
@@ -125,14 +152,14 @@ export function ChatThread() {
           id="response"
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
-          placeholder="Your response"
+          placeholder="Type your response…"
           disabled={status !== "idle"}
-          className="min-w-0 flex-1 rounded-full border border-peace-gray px-5 py-3 text-sm outline-none focus:border-peace-primary disabled:opacity-60"
+          className="min-w-0 flex-1 rounded-full border border-peace-gray px-6 py-3.5 text-sm outline-none focus:border-peace-primary disabled:opacity-60"
         />
         <button
           type="submit"
           disabled={!draft.trim() || status !== "idle"}
-          className="shrink-0 rounded-full peace-gradient-bg px-6 py-3 text-sm font-semibold text-peace-white disabled:opacity-40"
+          className="shrink-0 rounded-full peace-gradient-bg px-7 py-3.5 text-sm font-semibold text-peace-white disabled:opacity-40"
         >
           Send
         </button>
