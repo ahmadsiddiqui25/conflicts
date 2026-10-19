@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LinkButton } from "@/components/ui/Button";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { Benefits } from "@/components/home/Benefits";
@@ -25,6 +26,13 @@ export default function Home() {
             I have an invitation
           </LinkButton>
         </div>
+        <p className="mt-6 text-sm text-peace-body">
+          Already have an account?{" "}
+          <Link href="/login" className="font-medium text-peace-primary hover:underline">
+            Log in
+          </Link>
+        </p>
+
         <p className="mt-12 max-w-md text-xs text-peace-gray-muted">
           No participant, not even the room creator, can read another person&apos;s private
           conversation.
