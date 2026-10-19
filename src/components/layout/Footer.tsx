@@ -79,3 +79,24 @@ export function Footer() {
     </footer>
   );
 }
+
+export function MinimalFooter() {
+  return (
+    <footer className="mt-auto border-t border-peace-gray/60 bg-peace-white">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-4 text-xs text-peace-body sm:flex-row sm:px-6">
+        <p className="text-peace-gray-muted">&copy; 2026 Peace9</p>
+        <nav className="flex gap-4">
+          {SUPPORT_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="transition-colors hover:text-peace-primary"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </footer>
+  );
+}
