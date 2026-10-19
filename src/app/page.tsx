@@ -7,7 +7,7 @@ import { FinalCta } from "@/components/home/FinalCta";
 export default function Home() {
   return (
     <main className="flex flex-1 flex-col">
-      <section className="flex flex-col items-center px-4 pb-16 pt-20 text-center sm:px-6 sm:pt-28">
+      <section className="flex min-h-[calc(100svh-65px)] flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
         <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-peace-pink-shade">
           Peace is your birthright
         </p>
