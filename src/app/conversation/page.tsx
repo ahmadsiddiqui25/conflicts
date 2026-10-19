@@ -2,6 +2,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Card, PageHeading } from "@/components/ui/Card";
 import { ChatThread } from "@/components/conversation/ChatThread";
 import { LinkButton } from "@/components/ui/Button";
+import { StepBackLink } from "@/components/layout/StepBackLink";
 
 export default function PrivateConversationPage() {
   return (
@@ -13,8 +14,9 @@ export default function PrivateConversationPage() {
       <Card>
         <ChatThread />
       </Card>
-      <div className="mt-6 flex justify-end">
-        <LinkButton href="/conversation/translation">
+      <div className="mt-6 flex flex-wrap items-center gap-4">
+        <StepBackLink />
+        <LinkButton href="/conversation/translation" className="ml-auto">
           I&apos;m ready for my Peace Translation
         </LinkButton>
       </div>

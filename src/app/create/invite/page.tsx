@@ -2,6 +2,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Card, PageHeading } from "@/components/ui/Card";
 import { Button, LinkButton } from "@/components/ui/Button";
 import { InviteList } from "@/components/invite/InviteList";
+import { StepBackLink } from "@/components/layout/StepBackLink";
 
 export default function InviteParticipantsPage() {
   return (
@@ -16,9 +17,12 @@ export default function InviteParticipantsPage() {
         <InviteList askLabel="ASK 2" />
 
         <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
-          <Button type="button" variant="secondary">
-            Copy Invitation List
-          </Button>
+          <div className="flex items-center gap-4">
+            <StepBackLink />
+            <Button type="button" variant="secondary">
+              Copy Invitation List
+            </Button>
+          </div>
           <LinkButton href="/conversation">Send Invitations</LinkButton>
         </div>
 

@@ -2,6 +2,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Card, PageHeading } from "@/components/ui/Card";
 import { CounterTextArea, CounterTextField, TextField } from "@/components/forms/fields";
 import { LinkButton } from "@/components/ui/Button";
+import { StepBackLink } from "@/components/layout/StepBackLink";
 
 export default function CreatePeaceRoomPage() {
   return (
@@ -54,9 +55,12 @@ export default function CreatePeaceRoomPage() {
             Creation date, time and time zone recorded automatically.
           </p>
 
-          <LinkButton href="/create/asks" className="w-full sm:w-auto">
-            Continue
-          </LinkButton>
+          <div className="flex flex-wrap items-center gap-4">
+            <StepBackLink />
+            <LinkButton href="/create/asks" className="ml-auto w-full sm:w-auto">
+              Continue
+            </LinkButton>
+          </div>
         </form>
       </Card>
     </PageShell>

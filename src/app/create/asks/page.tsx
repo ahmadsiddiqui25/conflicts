@@ -2,6 +2,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Card, PageHeading } from "@/components/ui/Card";
 import { CounterTextArea } from "@/components/forms/fields";
 import { LinkButton } from "@/components/ui/Button";
+import { StepBackLink } from "@/components/layout/StepBackLink";
 
 export default function DefineAsksPage() {
   return (
@@ -46,9 +47,12 @@ export default function DefineAsksPage() {
             </p>
           </div>
 
-          <LinkButton href="/create/invite" className="w-full sm:w-auto">
-            Continue to Invitations
-          </LinkButton>
+          <div className="flex flex-wrap items-center gap-4">
+            <StepBackLink />
+            <LinkButton href="/create/invite" className="ml-auto w-full sm:w-auto">
+              Continue to Invitations
+            </LinkButton>
+          </div>
         </form>
       </Card>
     </PageShell>

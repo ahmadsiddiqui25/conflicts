@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { Card, PageHeading } from "@/components/ui/Card";
 import { LinkButton } from "@/components/ui/Button";
+import { StepBackLink } from "@/components/layout/StepBackLink";
 import { DiscussionComposer } from "@/components/room/DiscussionComposer";
 
 export default function SharedPeaceRoomPage() {
@@ -42,8 +43,11 @@ export default function SharedPeaceRoomPage() {
         <DiscussionComposer />
       </Card>
 
-      <div className="mt-6 flex justify-end">
-        <LinkButton href="/room/agreement">Continue to Peace Agreement</LinkButton>
+      <div className="mt-6 flex flex-wrap items-center gap-4">
+        <StepBackLink />
+        <LinkButton href="/room/agreement" className="ml-auto">
+          Continue to Peace Agreement
+        </LinkButton>
       </div>
     </PageShell>
   );
