@@ -6,7 +6,7 @@ import { DiscussionComposer } from "@/components/room/DiscussionComposer";
 
 export default function SharedPeaceRoomPage() {
   return (
-    <PageShell>
+    <PageShell wide>
       <PageHeading eyebrow="Step 6 of 8" title="Shared Peace Room" />
 
       <div className="mb-6 grid gap-4 sm:grid-cols-2">

@@ -6,7 +6,7 @@ import { StepBackLink } from "@/components/layout/StepBackLink";
 
 export default function PrivateConversationPage() {
   return (
-    <PageShell>
+    <PageShell wide>
       <PageHeading eyebrow="Step 4 of 8" title="Your Private Peace Conversation" />
       <div className="mb-6 rounded-[10px] bg-peace-light-pink/40 p-4 text-sm text-peace-secondary">
         Your words stay private unless you approve sharing.
