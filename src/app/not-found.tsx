@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LinkButton } from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
@@ -10,12 +10,9 @@ export default function NotFound() {
       <p className="mt-3 max-w-sm text-sm text-peace-body">
         The link may have expired or been moved. Try returning to the start.
       </p>
-      <Link
-        href="/"
-        className="peace-gradient-bg mt-8 rounded-full px-8 py-3 text-sm font-semibold text-peace-white"
-      >
+      <LinkButton href="/" className="mt-8">
         Back to Home
-      </Link>
+      </LinkButton>
     </main>
   );
 }

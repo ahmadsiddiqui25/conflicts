@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/Button";
 
 const ITEMS = [
   "Dedicated tennis hours on selected mornings",
@@ -46,13 +47,9 @@ export function AgreementPanel() {
 
       {decision === "pending" && (
         <div className="flex flex-wrap gap-3">
-          <button
-            type="button"
-            onClick={approve}
-            className="peace-gradient-bg rounded-full px-6 py-3 text-sm font-semibold text-peace-white"
-          >
+          <Button type="button" onClick={approve}>
             Approve
-          </button>
+          </Button>
           <button
             type="button"
             onClick={() => setDecision("revision")}

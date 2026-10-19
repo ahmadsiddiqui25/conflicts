@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LinkButton } from "@/components/ui/Button";
 
 export default function Home() {
   return (
@@ -15,18 +15,10 @@ export default function Home() {
         their position, then joins a shared room to find common ground together.
       </p>
       <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-        <Link
-          href="/create"
-          className="cmn-butn peace-gradient-bg inline-block rounded-full px-10 py-4 text-base font-semibold text-peace-white"
-        >
-          Create a Peace Room
-        </Link>
-        <Link
-          href="/invite"
-          className="rounded-full border border-peace-gray px-10 py-4 text-base font-semibold text-peace-secondary transition-colors hover:bg-peace-light-pink/40"
-        >
+        <LinkButton href="/create">Create a Peace Room</LinkButton>
+        <LinkButton href="/invite" variant="secondary">
           I have an invitation
-        </Link>
+        </LinkButton>
       </div>
       <p className="mt-12 max-w-md text-xs text-peace-gray-muted">
         No participant, not even the room creator, can read another person&apos;s private

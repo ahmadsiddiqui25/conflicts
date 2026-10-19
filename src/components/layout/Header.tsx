@@ -9,9 +9,10 @@ export function Header() {
           <Image
             src="/PEACE-9-e1779092679774.png"
             alt="Peace9"
-            width={170}
-            height={52}
+            width={1000}
+            height={295}
             priority
+            quality={100}
             className="h-10 w-auto sm:h-11"
           />
         </Link>

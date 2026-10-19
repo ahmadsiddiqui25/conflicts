@@ -2,10 +2,10 @@ import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40";
+  "inline-flex items-center justify-center gap-2 rounded-full px-10 py-[18.5px] text-[22px] font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40";
 
 const variants = {
-  primary: `${base} peace-gradient-bg text-peace-white`,
+  primary: `${base} peace-btn`,
   secondary: `${base} border border-peace-gray text-peace-secondary hover:bg-peace-light-pink/40`,
   ghost: `${base} text-peace-pink-shade hover:bg-peace-light-pink/40`,
 };
